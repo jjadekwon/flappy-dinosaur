@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{93F599BB-5EA1-61F6-F92A-37AE2C5207C6}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/UIManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/ColumnSpawner.cs" Line="56" Column="1" />
+      <File FileName="Assets/Scripts/BackgroundLoof.cs" Line="17" Column="6" />
+      <File FileName="Assets/Scripts/ScrollingObject.cs" Line="11" Column="6" />
+      <File FileName="Assets/Scripts/DinosaurController.cs" Line="73" Column="37" />
+      <File FileName="Assets/Scripts/GameManager.cs" Line="97" Column="1" />
+      <File FileName="Assets/Scripts/UIManager.cs" Line="35" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Flappy Dinosaur" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Scripts" expanded="True">
+                <Node name="UIManager.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="02901cea-bf26-498a-90ea-edb913ec5d94" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
