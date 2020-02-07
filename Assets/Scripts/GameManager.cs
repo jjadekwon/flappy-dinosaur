@@ -34,6 +34,10 @@ public class GameManager : MonoBehaviour
 
     public GameState gameState { get; private set; }
 
+    private int score = 0;
+    private float scoreUpdateTime = 1.5f;
+    private float lastScoreUpdateTime;
+
     void Awake()
     {
         if (_instance != null && _instance != this)
@@ -66,7 +70,15 @@ public class GameManager : MonoBehaviour
     {
         if (gameState == GameState.End) return;
 
-        //update score
+        // update score
+        if (gameState == GameState.Start)
+        {
+            if (Time.time >= lastScoreUpdateTime + scoreUpdateTime)
+            {
+                UIManager.instance.UpdateScore(score++);
+                lastScoreUpdateTime = Time.time;
+            }
+        }
     }
 
     public void EndGame()
