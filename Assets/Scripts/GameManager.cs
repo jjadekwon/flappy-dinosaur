@@ -105,6 +105,23 @@ public class GameManager : MonoBehaviour
         gameState = GameState.End;
         UIManager.instance.SetActiveGameOverText(true);
         UIManager.instance.SetActiveReplayUI(true);
+        UIManager.instance.SetActiveBestScoreText(true);
+
+        // best score
+        UpdateScore();
+    }
+
+    public void UpdateScore()
+    {
+        int bestScore = PlayerPrefs.GetInt("BestScore");
+        int currentScore = System.Int32.Parse(UIManager.instance.scoreText.text);
+        if (bestScore < currentScore)
+        {
+            bestScore = currentScore;
+            PlayerPrefs.SetInt("BestScore", bestScore);
+        }
+
+        UIManager.instance.UpdateBestScore(bestScore);
     }
 
     public void OnPlayButtonClick()

@@ -31,6 +31,8 @@ public class UIManager : MonoBehaviour
     public Text scoreText;
     public GameObject replayUI;
 
+    public Text bestScoreText;
+
     public Animator animator;
 
     private void Awake()
@@ -89,6 +91,16 @@ public class UIManager : MonoBehaviour
         gameOverText.gameObject.SetActive(active);
     }
 
+    public void SetActiveBestScoreText(bool active)
+    {
+        bestScoreText.gameObject.SetActive(active);
+    }
+
+    public void UpdateBestScore(int score)
+    {
+        bestScoreText.text = "Best Score : " + score.ToString();
+    }
+
     public void CountDownStart ()
     {
         StartCoroutine(Countdown());    // Get Ready 재생 후 3, 2, 1 카운트 다운
@@ -110,7 +122,7 @@ public class UIManager : MonoBehaviour
         countDownText.gameObject.SetActive(false);
         readyUI.SetActive(false);
 
-        // 게임 시작
+        // 게임 시
         GameManager.instance.StartGame();
 
         yield break;
