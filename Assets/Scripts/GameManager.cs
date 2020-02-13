@@ -14,23 +14,28 @@ public enum GameState { Intro, Ready, Start, End }
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager _instance;
-    public static GameManager instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = FindObjectOfType<GameManager>();
-            }
+    //private static GameManager _instance;
+    //public static GameManager instance
+    //{
+    //    get
+    //    {
+    //        if (_instance == null)
+    //        {
+    //            _instance = FindObjectOfType<GameManager>();
+    //        }
 
-            return _instance;
-        }
-        private set
-        {
-            _instance = value;
-        }
-    }
+    //        return _instance;
+    //    }
+    //    private set
+    //    {
+    //        _instance = value;
+    //    }
+    //}
+
+    public static GameManager instance;
+
+    public AManager aManager;
+    public BManager bManager;
 
     public GameState gameState { get; private set; }
 
@@ -38,12 +43,16 @@ public class GameManager : MonoBehaviour
     private float scoreUpdateTime = 1.5f;
     private float lastScoreUpdateTime;
 
+    private static bool isFirstPlay = true;
+
     void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(gameObject);
-        }
+        instance = this;
+
+        //if (_instance != null && _instance != this)
+        //{
+        //    Destroy(gameObject);
+        //}
 
         //var objs = FindObjectsOfType<GameManager>();
 
@@ -54,15 +63,25 @@ public class GameManager : MonoBehaviour
         //}
 
         //DontDestroyOnLoad(gameObject);
+
+        if (isFirstPlay == false)
+        {
+            OnPlayButtonClick();
+        }
+
+        //aManager.Init();
+        //bManager.Init();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("start");
-        gameState = GameState.Intro;
-
-        UIManager.instance.SetActiveStartUI(true);
+        if (isFirstPlay == true)
+        {
+            gameState = GameState.Intro;
+            UIManager.instance.SetActiveStartUI(true);
+        }
     }
 
     // Update is called once per frame
@@ -84,7 +103,6 @@ public class GameManager : MonoBehaviour
     public void EndGame()
     {
         gameState = GameState.End;
-
         UIManager.instance.SetActiveGameOverText(true);
         UIManager.instance.SetActiveReplayUI(true);
     }
@@ -100,6 +118,11 @@ public class GameManager : MonoBehaviour
 
     public void OnReplayButtonClick()
     {
+        isFirstPlay = false;
+
+        SceneManager.LoadScene("Main");
+
+
         //gameState = GameState.Ready;
 
         //UIManager.instance.SetActiveGameOverText(false);
@@ -110,5 +133,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameState = GameState.Start;
+    }
+
+    private void OnDestroy()
+    {
+        instance = null;
     }
 }

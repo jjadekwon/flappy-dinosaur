@@ -51,12 +51,7 @@ public class UIManager : MonoBehaviour
         //animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
     
-    }
-
     public void SetActiveScoreText(bool active)
     {
         scoreText.gameObject.SetActive(active);
@@ -69,6 +64,7 @@ public class UIManager : MonoBehaviour
 
     public void SetActiveStartUI(bool active)
     {
+        Debug.Log("SetActive :" + active);
         startUI.SetActive(active);
     }
 
@@ -80,7 +76,9 @@ public class UIManager : MonoBehaviour
     public void ShowGetReadyText()
     {
         readyUI.SetActive(true);
-        StartCoroutine(Countdown());    // Get Ready 재생 후 3, 2, 1 카운트 다운
+        getReadyText.gameObject.SetActive(true);
+        // Get Ready 텍스트 애니메이션 재생
+        animator.SetBool("GetReady", true);
 
         //getReadyText.gameObject.SetActive(true);
         //OnShowGetReadyText();
@@ -91,17 +89,15 @@ public class UIManager : MonoBehaviour
         gameOverText.gameObject.SetActive(active);
     }
 
+    public void CountDownStart ()
+    {
+        StartCoroutine(Countdown());    // Get Ready 재생 후 3, 2, 1 카운트 다운
+    }
+
     IEnumerator Countdown()
     {
-        getReadyText.gameObject.SetActive(true);
-
-        // Get Ready 텍스트 애니메이션 재생
-        animator.SetBool("GetReady", true);
-        yield return new WaitForSeconds(2.1f);
-
         animator.SetBool("GetReady", false);
         getReadyText.gameObject.SetActive(false);
-
 
         // 카운트 다운 텍스트
         countDownText.gameObject.SetActive(true);
@@ -114,7 +110,7 @@ public class UIManager : MonoBehaviour
         countDownText.gameObject.SetActive(false);
         readyUI.SetActive(false);
 
-        // 게임 시e
+        // 게임 시작
         GameManager.instance.StartGame();
 
         yield break;

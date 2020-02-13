@@ -38,11 +38,11 @@ public class DinosaurController : MonoBehaviour
         }
         else
         {
-            // 게임 시작 시
+            // 게임 시작 
             rigidbody.simulated = true;
         }
 
-        // 위로 올라가고 있으면 프로펠러 돌아가는 애니메이션 재
+        // 위로 올라가고 있으면 프로펠러 돌아가는 애니메이션 재생
         if (rigidbody.velocity.y > 0)
         {
             animator.Play("Fly");

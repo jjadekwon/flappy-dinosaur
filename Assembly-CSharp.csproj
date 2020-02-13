@@ -63,7 +63,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AManager.cs" />
+    <Compile Include="Assets\Scripts\AnimEventTrigger.cs" />
     <Compile Include="Assets\Scripts\BackgroundLoof.cs" />
+    <Compile Include="Assets\Scripts\BManager.cs" />
     <Compile Include="Assets\Scripts\ColumnSpawner.cs" />
     <Compile Include="Assets\Scripts\DinosaurController.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
